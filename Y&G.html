@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia ♡</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display for romance & Plus Jakarta Sans for UI -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        romance: {
+                            50: '#fdf8f6',
+                            100: '#fbe8e6',
+                            200: '#f5d3d0',
+                            300: '#ebb2ad',
+                            400: '#df8780',
+                            500: '#d06057',
+                            600: '#b8483f',
+                            700: '#9b3931',
+                            800: '#80322b',
+                            900: '#6b2d27',
+                        },
+                        pastel: {
+                            pink: '#fff1f2',
+                            rose: '#ffe4e6',
+                            blue: '#e0f2fe',
+                            gold: '#fef3c7',
+                            cream: '#fefae0',
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #faf7f5;
+            color: #4a3b32;
+            overflow-x: hidden;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-romantic-gradient {
+            background: linear-gradient(135deg, #fff1f2 0%, #fefae0 50%, #e0f2fe 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 30px -5px rgba(208, 96, 87, 0.12), 0 4px 6px -2px rgba(0, 0, 0, 0.03);
+        }
+        .card-shadow-hover:hover {
+            box-shadow: 0 20px 40px -10px rgba(208, 96, 87, 0.2), 0 8px 12px -4px rgba(0, 0, 0, 0.05);
+            transform: translateY(-3px);
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdf8f6;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f5d3d0;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #df8780;
+        }
+        @keyframes pulse-soft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .animate-pulse-soft {
+            animation: pulse-soft 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-romantic-gradient min-h-screen flex flex-col selection:bg-romance-200 selection:text-romance-900">
+
+    <!-- PANTALLA DE ACCESO -->
+    <div id="loginScreen" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-romance-50/95 backdrop-blur-md transition-opacity duration-700">
+        <div class="max-w-md w-full bg-white/90 backdrop-blur-xl border border-romance-200 rounded-3xl p-8 sm:p-10 card-shadow text-center relative overflow-hidden">
+            <div class="absolute -top-10 -right-10 w-32 h-32 bg-romance-100 rounded-full opacity-50 pointer-events-none blur-2xl"></div>
+            <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-pastel-blue rounded-full opacity-50 pointer-events-none blur-2xl"></div>
+
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-romance-100 text-romance-600 mb-6 text-2xl animate-pulse-soft">
+                ❤️
+            </div>
+
+            <h1 class="font-serif text-3xl sm:text-4xl font-bold text-romance-900 mb-3 tracking-tight">Nuestra Historia</h1>
+            
+            <div class="text-romance-700/80 italic text-sm sm:text-base space-y-1 mb-8 font-serif leading-relaxed">
+                <p>“Dos personas.</p>
+                <p>Una historia.</p>
+                <p>Todo lo que todavía nos falta vivir.”</p>
+            </div>
+
+            <form id="loginForm" class="space-y-4">
+                <div class="relative">
+                    <input 
+                        type="password" 
+                        id="passwordInput" 
+                        placeholder="Introduce nuestra contraseña" 
+                        class="w-full px-5 py-4 bg-romance-50/50 border border-romance-200 rounded-2xl text-center text-romance-900 placeholder-romance-400 focus:outline-none focus:ring-2 focus:ring-romance-400 focus:border-transparent transition-all duration-300 font-medium"
+                        autocomplete="current-password"
+                        required
+                    >
+                </div>
+
+                <div id="loginError" class="hidden text-romance-600 text-xs sm:text-sm font-medium bg-romance-100/80 py-2.5 px-4 rounded-xl border border-romance-200 animate-bounce">
+                    Mmm... esa no es nuestra contraseña ♡
+                </div>
+
+                <button 
+                    type="submit" 
+                    class="w-full py-4 bg-gradient-to-r from-romance-500 to-romance-600 text-white font-semibold rounded-2xl shadow-lg shadow-romance-500/30 hover:from-romance-600 hover:to-romance-700 transition-all duration-300 transform active:scale-[0.98] flex items-center justify-center gap-2"
+                >
+                    <span>Entrar</span>
+                    <span class="text-xl">❤️</span>
+                </button>
+            </form>
+
+            <div class="mt-8 text-xs text-romance-400 tracking-wider uppercase font-semibold">
+                Cápsula del tiempo y álbum en la nube
+            </div>
+        </div>
+    </div>
+
+    <!-- PANTALLA PRINCIPAL -->
+    <div id="mainApp" class="hidden flex-col min-h-screen">
+        
+        <!-- Header & Hero Section -->
+        <header class="w-full py-12 px-4 sm:px-6 lg:px-8 text-center relative">
+            <div class="max-w-4xl mx-auto">
+                <div class="inline-block text-romance-500 text-3xl sm:text-4xl mb-2 animate-pulse-soft">♡</div>
+                <h1 class="font-serif text-4xl sm:text-6xl font-bold text-romance-900 tracking-tight mb-3">
+                    NUESTRA HISTORIA
+                </h1>
+                <p class="text-romance-700/80 text-base sm:text-lg font-serif italic max-w-lg mx-auto mb-8">
+                    “Cada momento importante se convierte en nuestro capítulo.”
+                </p>
+
+                <!-- Status & Action Bar -->
+                <div class="flex flex-wrap items-center justify-center gap-4 bg-white/70 backdrop-blur-md border border-romance-200/80 py-3 px-6 rounded-2xl card-shadow max-w-lg mx-auto">
+                    <div id="counterBadge" class="text-sm sm:text-base font-semibold text-romance-800 flex items-center gap-2">
+                        <span class="inline-block w-2.5 h-2.5 rounded-full bg-romance-500 animate-ping"></span>
+                        <span id="counterText">Cargando recuerdos...</span>
+                    </div>
+                    <div class="h-5 w-px bg-romance-200 hidden sm:block"></div>
+                    <button 
+                        id="openModalBtn" 
+                        class="px-5 py-2.5 bg-romance-500 hover:bg-romance-600 text-white font-medium rounded-xl text-sm transition-all duration-300 shadow-md shadow-romance-500/20 flex items-center gap-2 transform active:scale-95"
+                    >
+                        <span>+ Agregar recuerdo</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Timeline Section -->
+        <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 pb-20 max-w-5xl">
+            <div class="relative">
+                <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-romance-300 via-romance-400 to-romance-200"></div>
+                <div id="timelineContainer" class="space-y-12 relative"></div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="w-full py-8 text-center border-t border-romance-200/60 bg-white/40 text-romance-600/70 text-sm font-serif">
+            <p>Creado con todo el amor del mundo para ti ♡ (Sincronizado en Firebase)</p>
+        </footer>
+    </div>
+
+    <!-- MODAL PARA AGREGAR RECUERDO -->
+    <div id="memoryModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-romance-900/40 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 card-shadow border border-romance-200 max-h-[90vh] overflow-y-auto transform scale-95 transition-transform duration-300" id="modalContentBox">
+            <div class="flex justify-between items-center mb-6 border-b border-romance-100 pb-4">
+                <h3 class="font-serif text-2xl font-bold text-romance-900 flex items-center gap-2">
+                    <span>✨</span> <span id="modalTitleText">Nuevo Recuerdo</span>
+                </h3>
+                <button id="closeModalBtn" class="w-9 h-9 rounded-full bg-romance-50 hover:bg-romance-100 text-romance-700 flex items-center justify-center transition-colors">
+                    ✕
+                </button>
+            </div>
+
+            <form id="memoryForm" class="space-y-5">
+                <input type="hidden" id="editMemoryId">
+                
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-romance-700 mb-1.5">Título del capítulo</label>
+                    <input 
+                        type="text" 
+                        id="inputTitle" 
+                        placeholder="Ej. Nuestro primer viaje juntos" 
+                        class="w-full px-4 py-3 bg-romance-50/50 border border-romance-200 rounded-xl text-romance-900 placeholder-romance-400 focus:outline-none focus:ring-2 focus:ring-romance-400 text-sm"
+                        required
+                    >
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-romance-700 mb-1.5">Fecha</label>
+                        <input 
+                            type="date" 
+                            id="inputDate" 
+                            class="w-full px-4 py-3 bg-romance-50/50 border border-romance-200 rounded-xl text-romance-900 focus:outline-none focus:ring-2 focus:ring-romance-400 text-sm"
+                            required
+                        >
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold uppercase tracking-wider text-romance-700 mb-1.5">Icono / Emoji</label>
+                        <select 
+                            id="inputIcon" 
+                            class="w-full px-4 py-3 bg-romance-50/50 border border-romance-200 rounded-xl text-romance-900 focus:outline-none focus:ring-2 focus:ring-romance-400 text-sm"
+                        >
+                            <option value="🎁">🎁 Regalo</option>
+                            <option value="💌">💌 Carta / Pregunta</option>
+                            <option value="🌙">🌙 Cita</option>
+                            <option value="✈️">✈️ Viaje</option>
+                            <option value="🎂">🎂 Cumpleaños</option>
+                            <option value="❤️">❤️ Amor / Aniversario</option>
+                            <option value="🏡">🏡 Hogar / Lugar</option>
+                            <option value="🔒">🔒 Próximo capítulo</option>
+                            <option value="⭐">⭐ Especial</option>
+                            <option value="🌊">🌊 Playa / Aventura</option>
+                            <option value="☕">☕ Café / Momento</option>
+                            <option value="🐾">🐾 Mascota</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-romance-700 mb-1.5">Estado del recuerdo</label>
+                    <select 
+                        id="inputStatus" 
+                        class="w-full px-4 py-3 bg-romance-50/50 border border-romance-200 rounded-xl text-romance-900 focus:outline-none focus:ring-2 focus:ring-romance-400 text-sm"
+                    >
+                        <option value="unlocked">Desbloqueado (Visible con foto y descripción)</option>
+                        <option value="locked">Bloqueado / Próximo capítulo (Secreto)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-romance-700 mb-1.5">Descripción romántica</label>
+                    <textarea 
+                        id="inputDescription" 
+                        rows="3" 
+                        placeholder="Escribe un recuerdo especial sobre este momento..." 
+                        class="w-full px-4 py-3 bg-romance-50/50 border border-romance-200 rounded-xl text-romance-900 placeholder-romance-400 focus:outline-none focus:ring-2 focus:ring-romance-400 text-sm resize-none"
+                        required
+                    ></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold uppercase tracking-wider text-romance-700 mb-1.5">Fotografía (Opcional)</label>
+                    <input 
+                        type="file" 
+                        id="inputPhoto" 
+                        accept="image/*" 
+                        class="w-full px-4 py-2.5 bg-romance-50/50 border border-romance-200 rounded-xl text-romance-700 text-sm file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-romance-100 file:text-romance-700 hover:file:bg-romance-200 cursor-pointer"
+                    >
+                    <p class="text-xs text-romance-500 mt-1">Se comprimirá automáticamente para Firebase (máx. 800px).</p>
+                    <div id="imagePreviewContainer" class="mt-3 hidden">
+                        <img id="imagePreviewElement" src="" alt="Vista previa" class="w-full h-40 object-cover rounded-xl border border-romance-200">
+                    </div>
+                </div>
+
+                <div id="formErrorMsg" class="hidden text-romance-600 text-xs font-medium bg-romance-50 py-2 px-3 rounded-lg border border-romance-200"></div>
+
+                <div class="flex gap-3 pt-2">
+                    <button 
+                        type="button" 
+                        id="cancelModalBtn" 
+                        class="flex-1 py-3 bg-romance-100 hover:bg-romance-200 text-romance-800 font-semibold rounded-xl text-sm transition-colors"
+                    >
+                        Cancelar
+                    </button>
+                    <button 
+                        type="submit" 
+                        id="submitBtn"
+                        class="flex-1 py-3 bg-romance-500 hover:bg-romance-600 text-white font-semibold rounded-xl text-sm shadow-md shadow-romance-500/20 transition-all flex items-center justify-center gap-2"
+                    >
+                        <span>Guardar en la nube</span>
+                        <span>❤️</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MENSAJE FLOTANTE DE NOTIFICACIÓN -->
+    <div id="toastNotification" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 max-w-sm">
+        <div id="toastContent" class="bg-white border border-romance-200 rounded-2xl p-4 card-shadow flex items-center gap-3">
+            <span id="toastIcon" class="text-xl">✨</span>
+            <p id="toastMessage" class="text-sm font-medium text-romance-900"></p>
+        </div>
+    </div>
+
+    <!-- FIREBASE & APP LOGIC -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, addDoc, doc, updateDoc, deleteDoc, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCjG-_bLIsFPbAC59eyttp_5vC6vAE2Xs8",
+            authDomain: "nuestra-historia-52d83.firebaseapp.com",
+            projectId: "nuestra-historia-52d83",
+            storageBucket: "nuestra-historia-52d83.firebasestorage.app",
+            messagingSenderId: "631193439412",
+            appId: "1:631193439412:web:228eaef376161e77c09be1"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const CORRECT_PASSWORD = "CHEFDM";
+        let memories = [];
+        let temporaryBase64Photo = "";
+
+        const INITIAL_MEMORIES = [
+            {
+                chapter: "CAPÍTULO 01",
+                title: "Nuestro primer regalo",
+                date: "2026-10-07",
+                icon: "🎁",
+                status: "unlocked",
+                description: "Ese fue uno de los primeros pequeños detalles que empezaron a construir nuestra historia.",
+                photo: ""
+            },
+            {
+                chapter: "CAPÍTULO 02",
+                title: "La pregunta",
+                date: "2026-10-07",
+                icon: "💌",
+                status: "unlocked",
+                description: "El día en que me preguntaste si quería ser tu novia y mi corazón supo que era el lugar correcto.",
+                photo: ""
+            },
+            {
+                chapter: "CAPÍTULO 03",
+                title: "Nuestra primera cita",
+                date: "2026-10-07",
+                icon: "🌙",
+                status: "unlocked",
+                description: "Luces tenues, risas nerviosas y charlas infinitas que se pasaron volando. Supe ese día que no te dejaría ir.",
+                photo: ""
+            }
+        ];
+
+        // Event Listeners de UI
+        document.getElementById("loginForm").addEventListener("submit", handleLogin);
+        document.getElementById("openModalBtn").addEventListener("click", openAddModal);
+        document.getElementById("closeModalBtn").addEventListener("click", closeAddModal);
+        document.getElementById("cancelModalBtn").addEventListener("click", closeAddModal);
+        document.getElementById("memoryForm").addEventListener("submit", saveMemoryToFirebase);
+        document.getElementById("inputPhoto").addEventListener("change", previewImage);
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const inputVal = document.getElementById("passwordInput").value.trim();
+            const errorBox = document.getElementById("loginError");
+
+            if (inputVal === CORRECT_PASSWORD) {
+                sessionStorage.setItem("nuestra_historia_auth", "true");
+                transitionToMainApp();
+            } else {
+                errorBox.classList.remove("hidden");
+                const pwdField = document.getElementById("passwordInput");
+                pwdField.classList.add("border-romance-500", "bg-romance-100");
+                setTimeout(() => {
+                    pwdField.classList.remove("border-romance-500", "bg-romance-100");
+                }, 1500);
+            }
+        }
+
+        window.onload = function() {
+            const isAuth = sessionStorage.getItem("nuestra_historia_auth");
+            if (isAuth === "true") {
+                const loginScreen = document.getElementById("loginScreen");
+                loginScreen.style.opacity = "0";
+                setTimeout(() => {
+                    loginScreen.classList.add("hidden");
+                    const mainApp = document.getElementById("mainApp");
+                    mainApp.classList.remove("hidden");
+                    mainApp.classList.add("flex");
+                    loadMemoriesFromFirebase();
+                }, 300);
+            }
+        };
+
+        function transitionToMainApp() {
+            const loginScreen = document.getElementById("loginScreen");
+            loginScreen.style.opacity = "0";
+            setTimeout(() => {
+                loginScreen.classList.add("hidden");
+                const mainApp = document.getElementById("mainApp");
+                mainApp.classList.remove("hidden");
+                mainApp.classList.add("flex");
+                loadMemoriesFromFirebase();
+                showToast("¡Bienvenida a nuestra historia, mi amor! ♡", "✨");
+            }, 500);
+        }
+
+        async function loadMemoriesFromFirebase() {
+            const container = document.getElementById("timelineContainer");
+            container.innerHTML = `<p class="text-center text-romance-500 py-10">Cargando nuestra historia desde la nube...</p>`;
+
+            try {
+                const q = query(collection(db, "memories"), orderBy("date", "asc"));
+                const querySnapshot = await getDocs(q);
+                
+                memories = [];
+                querySnapshot.forEach((docSnap) => {
+                    memories.push({ id: docSnap.id, ...docSnap.data() });
+                });
+
+                if (memories.length === 0) {
+                    for (const mem of INITIAL_MEMORIES) {
+                        await addDoc(collection(db, "memories"), mem);
+                    }
+                    return loadMemoriesFromFirebase();
+                }
+            } catch (e) {
+                console.error("Error al cargar de Firebase:", e);
+                container.innerHTML = `<p class="text-center text-red-500 py-10">Error de conexión con Firebase. Verifica tu internet.</p>`;
+                return;
+            }
+            renderTimeline();
+        }
+
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    let width = img.width;
+                    let height = img.height;
+                    const MAX_WIDTH = 800;
+
+                    if (width > MAX_WIDTH) {
+                        height = Math.round((height * MAX_WIDTH) / width);
+                        width = MAX_WIDTH;
+                    }
+
+                    canvas.width = width;
+                    canvas.height = height;
+
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, width, height);
+
+                    temporaryBase64Photo = canvas.toDataURL('image/jpeg', 0.6);
+
+                    const previewContainer = document.getElementById("imagePreviewContainer");
+                    const previewElement = document.getElementById("imagePreviewElement");
+                    previewElement.src = temporaryBase64Photo;
+                    previewContainer.classList.remove("hidden");
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function renderTimeline() {
+            const container = document.getElementById("timelineContainer");
+            container.innerHTML = "";
+
+            let unlockedCount = 0;
+
+            memories.forEach((mem, index) => {
+                if (mem.status === "unlocked") {
+                    unlockedCount++;
+                }
+
+                const isEven = index % 2 === 0;
+                const formattedDate = formatDateString(mem.date);
+
+                const itemDiv = document.createElement("div");
+                itemDiv.className = `relative flex flex-col md:flex-row items-center ${isEven ? 'md:flex-row-reverse' : ''} group`;
+
+                const centerBadge = `
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-white border-2 border-romance-400 text-romance-700 flex items-center justify-center text-xl card-shadow z-10 group-hover:scale-110 transition-transform duration-300">
+                        ${mem.icon || '❤️'}
+                    </div>
+                `;
+
+                const cardContent = `
+                    <div class="w-full md:w-5/12 bg-white/90 backdrop-blur-md rounded-3xl p-6 sm:p-8 card-shadow card-shadow-hover border border-romance-200/80 transition-all duration-300 relative overflow-hidden">
+                        
+                        ${mem.status === 'locked' ? `
+                            <div class="absolute inset-0 bg-romance-900/60 backdrop-blur-md z-20 flex flex-col items-center justify-center p-6 text-center text-white">
+                                <span class="text-3xl mb-2">🔒</span>
+                                <h4 class="font-serif text-xl font-bold mb-1">${mem.title}</h4>
+                                <p class="text-xs text-romance-200 font-serif italic">Próximamente desbloquearemos este hermoso capítulo.</p>
+                                <button data-action="unlock" data-id="${mem.id}" class="unlock-btn mt-4 px-4 py-2 bg-romance-500 hover:bg-romance-600 text-white rounded-xl text-xs font-semibold shadow-md transition-all">
+                                    Desbloquear ❤️
+                                </button>
+                            </div>
+                        ` : ''}
+
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold tracking-widest uppercase text-romance-500 bg-romance-50 px-3 py-1 rounded-full border border-romance-200">
+                                ${mem.chapter || `CAPÍTULO 0${index + 1}`}
+                            </span>
+                            <span class="text-xs font-medium text-romance-600/70">${formattedDate}</span>
+                        </div>
+
+                        <h3 class="font-serif text-2xl font-bold text-romance-900 mb-3">
+                            ${mem.title}
+                        </h3>
+
+                        ${mem.photo ? `
+                            <div class="mb-4 overflow-hidden rounded-2xl border border-romance-100 aspect-video bg-romance-50">
+                                <img src="${mem.photo}" alt="${mem.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/800x600/fbe8e6/80322b?text=Nuestra+Historia'">
+                            </div>
+                        ` : ''}
+
+                        <p class="font-serif italic text-romance-800/90 text-sm sm:text-base leading-relaxed">
+                            “${mem.description}”
+                        </p>
+
+                        <div class="mt-4 pt-3 border-t border-romance-100 flex justify-end gap-2">
+                            <button data-action="edit" data-id="${mem.id}" class="edit-btn text-xs font-semibold text-romance-600 hover:text-romance-800 px-3 py-1 bg-romance-50 rounded-lg transition-colors">
+                                Editar ✏️
+                            </button>
+                            <button data-action="delete" data-id="${mem.id}" class="delete-btn text-xs font-semibold text-romance-400 hover:text-romance-700 px-3 py-1 bg-romance-50 rounded-lg transition-colors">
+                                Eliminar 🗑️
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                itemDiv.innerHTML = centerBadge + cardContent + `<div class="hidden md:block w-2/12"></div>`;
+                container.appendChild(itemDiv);
+            });
+
+            // Asignar eventos dinámicos a los botones de las tarjetas
+            document.querySelectorAll('.edit-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => editMemory(e.currentTarget.dataset.id));
+            });
+            document.querySelectorAll('.delete-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => deleteMemory(e.currentTarget.dataset.id));
+            });
+            document.querySelectorAll('.unlock-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => toggleLock(e.currentTarget.dataset.id));
+            });
+
+            document.getElementById("counterText").innerText = `${unlockedCount} / ${memories.length} recuerdos desbloqueados`;
+        }
+
+        function formatDateString(dateStr) {
+            if (!dateStr) return "";
+            try {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const dateObj = new Date(dateStr + 'T00:00:00');
+                return dateObj.toLocaleDateString('es-ES', options);
+            } catch (e) {
+                return dateStr;
+            }
+        }
+
+        function openAddModal() {
+            document.getElementById("modalTitleText").innerText = "Nuevo Recuerdo";
+            document.getElementById("memoryForm").reset();
+            document.getElementById("editMemoryId").value = "";
+            temporaryBase64Photo = "";
+            document.getElementById("imagePreviewContainer").classList.add("hidden");
+            
+            const modal = document.getElementById("memoryModal");
+            modal.classList.remove("hidden");
+            setTimeout(() => {
+                modal.classList.remove("opacity-0");
+                document.getElementById("modalContentBox").classList.remove("scale-95");
+            }, 10);
+        }
+
+        function closeAddModal() {
+            const modal = document.getElementById("memoryModal");
+            modal.classList.add("opacity-0");
+            document.getElementById("modalContentBox").classList.add("scale-95");
+            setTimeout(() => {
+                modal.classList.add("hidden");
+            }, 300);
+        }
+
+        async function saveMemoryToFirebase(event) {
+            event.preventDefault();
+            const id = document.getElementById("editMemoryId").value;
+            const title = document.getElementById("inputTitle").value.trim();
+            const date = document.getElementById("inputDate").value;
+            const icon = document.getElementById("inputIcon").value;
+            const status = document.getElementById("inputStatus").value;
+            const description = document.getElementById("inputDescription").value.trim();
+            const submitBtn = document.getElementById("submitBtn");
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Guardando en la nube...";
+
+            let photoUrl = "";
+            if (temporaryBase64Photo) {
+                photoUrl = temporaryBase64Photo;
+            } else if (id) {
+                const existing = memories.find(m => m.id === id);
+                if (existing) photoUrl = existing.photo;
+            }
+
+            try {
+                if (id) {
+                    const docRef = doc(db, "memories", id);
+                    await updateDoc(docRef, {
+                        title,
+                        date,
+                        icon,
+                        status,
+                        description,
+                        photo: photoUrl
+                    });
+                    showToast("¡Capítulo actualizado con éxito! ♡", "✨");
+                } else {
+                    const newMem = {
+                        chapter: `CAPÍTULO 0${memories.length + 1}`,
+                        title,
+                        date,
+                        icon,
+                        status,
+                        description,
+                        photo: photoUrl,
+                        createdAt: new Date()
+                    };
+                    await addDoc(collection(db, "memories"), newMem);
+                    showToast("¡Capítulo guardado en la nube! ♡", "✨");
+                }
+
+                closeAddModal();
+                loadMemoriesFromFirebase();
+            } catch (e) {
+                console.error("Error al guardar:", e);
+                alert("La foto es muy pesada para Firestore. Intenta con otra imagen más ligera.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<span>Guardar en la nube</span><span>❤️</span>`;
+            }
+        }
+
+        function editMemory(id) {
+            const mem = memories.find(m => m.id === id);
+            if (!mem) return;
+
+            document.getElementById("modalTitleText").innerText = "Editar Capítulo";
+            document.getElementById("editMemoryId").value = mem.id;
+            document.getElementById("inputTitle").value = mem.title;
+            document.getElementById("inputDate").value = mem.date;
+            document.getElementById("inputIcon").value = mem.icon || "❤️";
+            document.getElementById("inputStatus").value = mem.status || "unlocked";
+            document.getElementById("inputDescription").value = mem.description;
+
+            temporaryBase64Photo = mem.photo || "";
+            if (mem.photo) {
+                const previewContainer = document.getElementById("imagePreviewContainer");
+                const previewElement = document.getElementById("imagePreviewElement");
+                previewElement.src = mem.photo;
+                previewContainer.classList.remove("hidden");
+            } else {
+                document.getElementById("imagePreviewContainer").classList.add("hidden");
+            }
+
+            const modal = document.getElementById("memoryModal");
+            modal.classList.remove("hidden");
+            setTimeout(() => {
+                modal.classList.remove("opacity-0");
+                document.getElementById("modalContentBox").classList.remove("scale-95");
+            }, 10);
+        }
+
+        async function deleteMemory(id) {
+            if (confirm("¿Estás segura(o) de eliminar este hermoso capítulo de la nube?")) {
+                try {
+                    await deleteDoc(doc(db, "memories", id));
+                    loadMemoriesFromFirebase();
+                    showToast("Capítulo eliminado con éxito", "🗑️");
+                } catch (e) {
+                    console.error("Error al eliminar:", e);
+                }
+            }
+        }
+
+        async function toggleLock(id) {
+            try {
+                const docRef = doc(db, "memories", id);
+                await updateDoc(docRef, { status: "unlocked" });
+                loadMemoriesFromFirebase();
+                showToast("¡Capítulo desbloqueado! 🎉", "🔓");
+            } catch (e) {
+                console.error("Error al desbloquear:", e);
+            }
+        }
+
+        function showToast(message, icon = "✨") {
+            const toast = document.getElementById("toastNotification");
+            const toastMsg = document.getElementById("toastMessage");
+            const toastIcon = document.getElementById("toastIcon");
+
+            toastMsg.innerText = message;
+            toastIcon.innerText = icon;
+
+            toast.classList.remove("translate-y-32", "opacity-0");
+            setTimeout(() => {
+                toast.classList.add("translate-y-32", "opacity-0");
+            }, 3500);
+        }
+    </script>
+</body>
+</html>
